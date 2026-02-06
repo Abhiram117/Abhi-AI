@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JARIVS by Abhi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="lockScreen">
+  <h1>JARIVS</h1>
+  <p>Enter Access Password</p>
+  <input type="password" id="passwordInput" placeholder="Password">
+  <button onclick="checkPassword()">Enter</button>
+  <p id="error"></p>
+</div>
+
+<div id="mainSystem" style="display:none;">
+  <div id="leftPanel">
+    <h3>User Input</h3>
+    <div id="userText">Waiting for voice...</div>
+    <h3>JARIVS Reply</h3>
+    <div id="aiText">System ready.</div>
+    <div id="webArea"></div>
+  </div>
+
+  <div id="rightPanel">
+    <div id="earth"></div>
+    <div id="aiCore">JARIVS</div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
