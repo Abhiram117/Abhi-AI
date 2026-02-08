@@ -1,0 +1,67 @@
+body{
+  margin:0;
+  background:black;
+  color:#00ffff;
+  font-family:Arial;
+}
+
+#login{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+#login input,button{
+  padding:10px;
+  margin:5px;
+  font-size:16px;
+}
+
+.hidden{display:none;}
+
+#app{
+  display:flex;
+  height:100vh;
+}
+
+.left{
+  width:20%;
+  background:#050505;
+  padding:10px;
+}
+
+.center{
+  width:40%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.right{
+  width:40%;
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+.core{
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  border:3px solid cyan;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:spin 5s linear infinite;
+}
+
+@keyframes spin{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
