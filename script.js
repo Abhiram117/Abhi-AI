@@ -1,95 +1,45 @@
 let recognition;
-let bossMode = false;
-
-function speak(text, lang = currentLang) {
-  const msg = new SpeechSynthesisUtterance(text);
-  msg.lang = LANG[lang];
-  msg.rate = 0.95;
-  window.speechSynthesis.speak(msg);
-}
+let synth = window.speechSynthesis;
 
 function checkPassword() {
-  const pass = document.getElementById("passwordInput").value;
+  const pass = document.getElementById("password").value;
   if (pass === "PAR555") {
-    document.getElementById("passwordScreen").style.display = "none";
-    document.getElementById("aiScreen").classList.remove("hidden");
-    speak("Abhi AI system was started");
-    startListening();
+    document.getElementById("login").style.display = "none";
+    document.getElementById("ai").style.display = "block";
+    speak("ABHI AI system started");
   } else {
-    alert("Wrong Password");
+    alert("Wrong password");
   }
 }
 
-function startListening() {
+function startAI() {
   recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-  recognition.lang = LANG[currentLang];
+  recognition.lang = langMap[currentLang];
   recognition.continuous = true;
 
-  recognition.onresult = async (e) => {
-    const text = e.results[e.results.length - 1][0].transcript.toLowerCase();
-    document.getElementById("userText").innerText = text;
+  recognition.onresult = (e) => {
+    let text = e.results[e.results.length - 1][0].transcript.toLowerCase();
     handleCommand(text);
   };
 
   recognition.start();
+  document.getElementById("status").innerText = "Listening...";
 }
 
-async function handleCommand(text) {
-  document.getElementById("aiBall").classList.add("listening");
+function speak(text) {
+  let msg = new SpeechSynthesisUtterance(text);
+  msg.lang = langMap[currentLang];
+  synth.speak(msg);
+}
 
-  // Boss mode
-  if (text.includes("i am abhi the boss")) {
-    bossMode = true;
-    speak("Boss mode activated");
-    return;
-  }
+function handleCommand(cmd) {
+  if (cmd.includes("change language to kannada")) changeLanguage("kannada");
+  if (cmd.includes("change language to telugu")) changeLanguage("telugu");
+  if (cmd.includes("change language to tamil")) changeLanguage("tamil");
 
-  if (text.includes("boss mode deactivate")) {
-    bossMode = false;
-    speak("Boss mode deactivated");
-    return;
-  }
+  if (cmd.includes("open youtube")) window.open("https://youtube.com", "_blank");
+  if (cmd.includes("open chrome")) window.open("https://google.com", "_blank");
+  if (cmd.includes("close")) recognition.stop();
 
-  // Language change
-  if (text.includes("kannada")) changeLanguage("kn");
-  if (text.includes("telugu")) changeLanguage("te");
-  if (text.includes("tamil")) changeLanguage("ta");
-  if (text.includes("english")) changeLanguage("en");
-
-  // YouTube
-  if (text.includes("youtube")) {
-    const f = document.getElementById("sideFrame");
-    f.src = "https://www.youtube.com";
-    f.style.display = "block";
-    speak("Opening YouTube");
-    return;
-  }
-
-  // Google
-  if (text.includes("google")) {
-    const f = document.getElementById("sideFrame");
-    f.src = "https://www.google.com";
-    f.style.display = "block";
-    speak("Opening Google");
-    return;
-  }
-
-  // ChatGPT
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + OPENAI_API_KEY
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: text }]
-    })
-  });
-
-  const data = await res.json();
-  const reply = data.choices[0].message.content;
-  speak(reply);
-
-  document.getElementById("aiBall").classList.remove("listening");
+  speak("You said " + cmd);
 }
