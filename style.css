@@ -1,69 +1,14 @@
 body {
-  margin: 0;
-  background: black;
-  color: cyan;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  background:black;
+  color:#00ffff;
+  text-align:center;
+  font-family:Arial;
 }
 
-.hidden { display: none; }
-
-/* Password */
-#passwordScreen {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Layout */
-#aiScreen {
-  display: flex;
-  height: 100vh;
-}
-
-#leftPanel {
-  width: 35%;
-  padding: 20px;
-}
-
-#centerPanel {
-  width: 65%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* AI Ball */
-#aiBall {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: radial-gradient(circle, cyan, blue);
-  animation: idle 3s infinite;
-}
-
-@keyframes idle {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-.listening {
-  animation: listening 1s infinite;
-}
-
-@keyframes listening {
-  0% { box-shadow: 0 0 10px cyan; }
-  50% { box-shadow: 0 0 40px cyan; }
-  100% { box-shadow: 0 0 10px cyan; }
-}
-
-#sideFrame {
-  width: 100%;
-  height: 300px;
-  border: none;
-  display: none;
+#orb {
+  margin:40px auto;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:radial-gradient(circle, cyan, blue);
 }
