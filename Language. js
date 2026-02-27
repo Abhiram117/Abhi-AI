@@ -1,15 +1,13 @@
 let currentLang = "en";
 
-const LANG = {
-  en: "en-US",
-  te: "te-IN",
-  kn: "kn-IN",
-  ta: "ta-IN"
+const langMap = {
+  en: "en-IN",
+  telugu: "te-IN",
+  kannada: "kn-IN",
+  tamil: "ta-IN"
 };
 
-function changeLanguage(code) {
-  if (LANG[code]) {
-    currentLang = code;
-    speak("Language changed", code);
-  }
+function changeLanguage(lang) {
+  currentLang = lang;
+  speak("Language changed");
 }
