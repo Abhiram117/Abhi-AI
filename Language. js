@@ -1,0 +1,15 @@
+let currentLang = "en";
+
+const LANG = {
+  en: "en-US",
+  te: "te-IN",
+  kn: "kn-IN",
+  ta: "ta-IN"
+};
+
+function changeLanguage(code) {
+  if (LANG[code]) {
+    currentLang = code;
+    speak("Language changed", code);
+  }
+}
