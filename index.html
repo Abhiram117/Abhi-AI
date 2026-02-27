@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +6,30 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>ABHI AI</h1>
-  <div id="chat"></div>
-  <input id="userInput" placeholder="Ask me anything">
-  <button onclick="askAI()">Send</button>
 
-  <script src="config.js"></script>
-  <script src="script.js"></script>
+<!-- PASSWORD SCREEN -->
+<div id="passwordScreen">
+  <h2>Password</h2>
+  <input type="password" id="passwordInput" placeholder="Enter Password">
+  <button onclick="checkPassword()">ENTER</button>
+</div>
+
+<!-- AI SCREEN -->
+<div id="aiScreen" class="hidden">
+  <div id="leftPanel">
+    <div id="userText">Listening…</div>
+    <iframe id="sideFrame"></iframe>
+  </div>
+
+  <div id="centerPanel">
+    <div id="aiBall"></div>
+    <div id="aiName">ABHI AI</div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="languages.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
