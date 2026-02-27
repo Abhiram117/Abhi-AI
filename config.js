@@ -1,3 +1,4 @@
+// ⚠️ ADD YOUR OPENAI API KEY HERE
+// Example: sk-xxxxxxxxxxxxxxxx
 
-// 🔐 ADD YOUR API KEY HERE (keep private)
-const OPENAI_API_KEY = "PASTE_YOUR_API_KEY_HERE";
+const OPENAI_API_KEY = "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";
