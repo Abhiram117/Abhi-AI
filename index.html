@@ -1,35 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>ABHI AI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PASSWORD SCREEN -->
-<div id="passwordScreen">
-  <h2>Password</h2>
-  <input type="password" id="passwordInput" placeholder="Enter Password">
-  <button onclick="checkPassword()">ENTER</button>
+<div id="login">
+  <h2>Enter Password</h2>
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="checkPassword()">Unlock</button>
 </div>
 
-<!-- AI SCREEN -->
-<div id="aiScreen" class="hidden">
-  <div id="leftPanel">
-    <div id="userText">Listening…</div>
-    <iframe id="sideFrame"></iframe>
-  </div>
-
-  <div id="centerPanel">
-    <div id="aiBall"></div>
-    <div id="aiName">ABHI AI</div>
-  </div>
+<div id="ai" style="display:none;">
+  <h3 id="status">Tap to start ABHI AI</h3>
+  <button onclick="startAI()">🎤 Start Listening</button>
+  <div id="orb">ABHI AI</div>
 </div>
 
 <script src="config.js"></script>
 <script src="languages.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
